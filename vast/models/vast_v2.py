@@ -581,7 +581,7 @@ class Creative(object):
     """
 
     SOME_OFS = (
-        SomeOf(attr_names=("linear", "non_linear", "companion_ads")),
+        SomeOf(attr_names=("linear", "non_linear", "companion")),
     )
     CONVERTERS = (
         Converter(unicode, ("id", "ad_id")),
@@ -591,7 +591,7 @@ class Creative(object):
     CLASSES = (
         ClassChecker("linear", Linear),
         ClassChecker("non_linear", NonLinear),
-        ClassChecker("companion_ads", Companion, True)
+        ClassChecker("companion_ads", CompanionAd, True)
     )
     VALIDATORS = (
         validators.make_greater_then_validator("sequence", -1),
@@ -610,7 +610,6 @@ class Creative(object):
     def make(cls, linear=None, non_linear=None, companion=None,
              id=None, sequence=None, ad_id=None, api_framework=None,
              ):
-        print('companion={}'.format(companion))
         instance = check_and_convert(
             cls,
             args_dict=dict(
