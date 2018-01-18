@@ -7,7 +7,6 @@ if sys.version_info[:2] < (2, 7):
     raise Exception("Vast lib only work on Python 2.7 and greater or PyPy")
 
 
-
 setup(
     name="vast",
     description="Utility to parse vast XML documents",
