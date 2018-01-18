@@ -46,7 +46,8 @@ class MimeType(Enum):
     FLASH = "application/x-shockwave-flash"
     WEBM = "video/webm"
     GPP = "video/3gpp"
-    MPEG = "application/x-mpegURL"
+    HLS = "application/x-mpegURL"
+    FLV = "video/x-flv"
 
 
 class TrackingEventType(Enum):
@@ -182,12 +183,17 @@ class MediaFile(object):
             ),
         )
 
-        if instance.type in (MimeType.FLASH, MimeType.JS):
-            vs = list(cls.VALIDATORS)
-        elif instance.delivery == Delivery.PROGRESSIVE:
-            vs = list(cls.VALIDATORS) + [cls._validate_bitrate]
-        else:
-            vs = list(cls.VALIDATORS) + [cls._validate_min_max_bitrate]
+        vs = list(cls.VALIDATORS)
+
+        #  WE DON'T ACTUALLY NEED TO CHECK PRESENCE OF BITRATE, IT'S NOT
+        #  A REQUIRED FIELD PER THE VAST 2.0 SPEC
+
+        # if instance.type in (MimeType.FLASH, MimeType.JS):
+        #     vs = list(cls.VALIDATORS)
+        # elif instance.delivery == Delivery.PROGRESSIVE:
+        #     vs = list(cls.VALIDATORS) + [cls._validate_bitrate]
+        # else:
+        #     vs = list(cls.VALIDATORS) + [cls._validate_min_max_bitrate]
 
         validators.validate(instance, vs)
 
@@ -206,7 +212,7 @@ class MediaFile(object):
         if instance.min_bitrate is None:
             errors.append("media file min_bitrate cannot be None for streaming media")
         if instance.max_bitrate is None:
-            errors.append("media file min_bitrate cannot be None for streaming media")
+            errors.append("media file max_bitrate cannot be None for streaming media")
         if not errors and instance.min_bitrate > instance.max_bitrate:
             msg = "media file min_bitrate={min_bitrate} is greater than max_bitrate={max_bitrate}"
             errors.append(msg.format(min_bitrate=instance.min_bitrate, max_bitrate=instance.max_bitrate))
