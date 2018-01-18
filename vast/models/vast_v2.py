@@ -591,7 +591,7 @@ class Creative(object):
     CLASSES = (
         ClassChecker("linear", Linear),
         ClassChecker("non_linear", NonLinear),
-        ClassChecker("companion_ads", CompanionAd, True)
+        ClassChecker("companion_ads", Companion, True)
     )
     VALIDATORS = (
         validators.make_greater_then_validator("sequence", -1),
