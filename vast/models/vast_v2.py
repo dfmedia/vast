@@ -610,6 +610,7 @@ class Creative(object):
     def make(cls, linear=None, non_linear=None, companion=None,
              id=None, sequence=None, ad_id=None, api_framework=None,
              ):
+        print('companion={}'.format(companion))
         instance = check_and_convert(
             cls,
             args_dict=dict(
