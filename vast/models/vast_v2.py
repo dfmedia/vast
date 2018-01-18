@@ -581,7 +581,7 @@ class Creative(object):
     """
 
     SOME_OFS = (
-        SomeOf(attr_names=("linear", "non_linear")),
+        SomeOf(attr_names=("linear", "non_linear", "companion_ads")),
     )
     CONVERTERS = (
         Converter(unicode, ("id", "ad_id")),
