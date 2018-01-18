@@ -1,2 +1,7 @@
 /vast/_version.py
 /version.txt
+
+.Python
+.idea/
+bin/
+pip-selfcheck.json
