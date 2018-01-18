@@ -615,7 +615,7 @@ class Creative(object):
             args_dict=dict(
                 linear=linear,
                 non_linear=non_linear,
-                companion_ads=companion_ads,
+                companion=companion_ads,
                 id=id,
                 sequence=sequence,
                 ad_id=ad_id,
