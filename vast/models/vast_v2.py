@@ -599,7 +599,7 @@ class Creative(object):
 
     linear = attr.ib()
     non_linear = attr.ib()
-    companion = attr.ib()
+    companion_ads = attr.ib()
 
     id = attr.ib()
     sequence = attr.ib()
