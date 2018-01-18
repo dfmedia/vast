@@ -607,7 +607,7 @@ class Creative(object):
     api_framework = attr.ib()
 
     @classmethod
-    def make(cls, linear=None, non_linear=None, companion=None,
+    def make(cls, linear=None, non_linear=None, companion_ads=None,
              id=None, sequence=None, ad_id=None, api_framework=None,
              ):
         instance = check_and_convert(
@@ -615,7 +615,7 @@ class Creative(object):
             args_dict=dict(
                 linear=linear,
                 non_linear=non_linear,
-                companion=companion,
+                companion_ads=companion_ads,
                 id=id,
                 sequence=sequence,
                 ad_id=ad_id,
