@@ -48,6 +48,7 @@ class MimeType(Enum):
     GPP = "video/3gpp"
     HLS = "application/x-mpegURL"
     FLV = "video/x-flv"
+    OGG = 'audio/ogg'
 
 
 class TrackingEventType(Enum):
