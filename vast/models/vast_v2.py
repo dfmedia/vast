@@ -42,6 +42,7 @@ class MimeType(Enum):
      “video/x- flv” for Flash Video and “video/mp4” for MP4
     """
     MP4 = "video/mp4"
+    MP3 = "audio/mpeg"
     JS = "application/javascript"
     FLASH = "application/x-shockwave-flash"
     WEBM = "video/webm"
