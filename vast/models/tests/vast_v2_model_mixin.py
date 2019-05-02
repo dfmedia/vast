@@ -2,7 +2,7 @@ from vast.models import vast_v2
 
 
 class VastModelMixin(object):
-    def make_vast(self, version=u"2.0", ad=None):
+    def make_vast(self, version="2.0", ad=None):
         return vast_v2.Vast.make(
             version=version,
             ad=ad or self.make_wrapper_ad(),
@@ -21,11 +21,11 @@ class VastModelMixin(object):
 
     @staticmethod
     def make_wrapper(
-            ad_system=u"Mag",
-            vast_ad_tag_uri=u"https://www.magu.com",
-            ad_title=u"MagAd",
-            impression=u"https://www.mag_impression.com",
-            error=u"https://www.mag_error.com",
+            ad_system="Mag",
+            vast_ad_tag_uri="https://www.magu.com",
+            ad_title="MagAd",
+            impression="https://www.mag_impression.com",
+            error="https://www.mag_error.com",
             creatives=None,
     ):
         return vast_v2.Wrapper.make(
@@ -39,9 +39,9 @@ class VastModelMixin(object):
 
     def make_inline(
             self,
-            ad_system=u"Mag",
-            ad_title=u"MagAd",
-            impression=u"https://www.mag_impression.com",
+            ad_system="Mag",
+            ad_title="MagAd",
+            impression="https://www.mag_impression.com",
             creatives=None,
     ):
         return vast_v2.Inline.make(
@@ -101,9 +101,9 @@ class VastModelMixin(object):
 
     @staticmethod
     def make_media_file(
-            asset=u"https://www.mag.u",
-            delivery=u"progressive",
-            type=u"video/mp4",
+            asset="https://www.mag.u",
+            delivery="progressive",
+            type="video/mp4",
             width=300,
             height=250,
             bitrate=150,
