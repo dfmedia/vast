@@ -9,7 +9,11 @@ def accept_none(parse_func):
 
 def unicode_to_dict(parse_func):
     def parse(xml_dict):
-        if isinstance(xml_dict, str):
+        try:
+            from __builtin__ import basestring
+        except ModuleNotFoundError:
+            basestring = str
+        if isinstance(xml_dict, basestring):
             xml_dict = {"#text": xml_dict}
         return parse_func(xml_dict)
 
