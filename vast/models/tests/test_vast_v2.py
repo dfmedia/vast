@@ -34,7 +34,7 @@ class TestVastIllegals(VastModelMixin, TestWithScenarios):
     ]
 
     def test_it_breaks(self):
-        kw = dict(version=u"2.0", ad=self.make_wrapper_ad())
+        kw = dict(version="2.0", ad=self.make_wrapper_ad())
         kw.update(self.update)
         with self.assertRaises(IllegalModelStateError):
             # We call the model directly here,

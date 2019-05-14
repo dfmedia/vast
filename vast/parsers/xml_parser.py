@@ -4,7 +4,7 @@ from vast.errors import ParseError
 from vast.parsers import vast_v2
 
 _PARSERS = {
-    u"2.0": vast_v2.parse_xml
+    "2.0": vast_v2.parse_xml
 }
 
 _FORCE_LIST_ELEMENTS = (

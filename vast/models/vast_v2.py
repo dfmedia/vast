@@ -83,7 +83,7 @@ class TrackingEvent(object):
 
     REQUIRED = ("tracking_event_uri", "tracking_event_type")
     CONVERTERS = (
-        Converter(unicode, ("tracking_event_uri", )),
+        Converter(str, ("tracking_event_uri", )),
         Converter(TrackingEventType, ("tracking_event_type", )),
     )
 
@@ -110,7 +110,7 @@ class MediaFile(object):
     """
     REQUIRED = ("asset", "delivery", "type", "width", "height")
     CONVERTERS = (
-        Converter(type=unicode, attr_names=("asset", "codec", "id")),
+        Converter(type=str, attr_names=("asset", "codec", "id")),
         Converter(type=int, attr_names=("width", "height", "bitrate", "min_bitrate", "max_bitrate")),
         Converter(type=bool, attr_names=("scalable", "maintain_aspect_ratio")),
         Converter(type=MimeType, attr_names=("type", )),
@@ -228,7 +228,7 @@ class VideoClicks(object):
     A container for URI elements, for when a user interacts with the video
     """
     CONVERTERS = (
-        Converter(unicode, ("click_through", "click_tracking", "custom_click")),
+        Converter(str, ("click_through", "click_tracking", "custom_click")),
     )
 
     click_through = attr.ib()
@@ -263,7 +263,7 @@ class AdParameters(object):
     """
     REQUIRED = ("data", )
     CONVERTERS = (
-        Converter(unicode, ("data",)),
+        Converter(str, ("data",)),
         Converter(bool, ("xml_encoded", )),
     )
 
@@ -339,7 +339,7 @@ class Linear(object):
 class StaticResource(object):
     REQUIRED = ("resource", "mime_type")
     CONVERTERS = (
-        Converter(unicode, ("resource", "mime_type")),
+        Converter(str, ("resource", "mime_type")),
     )
     resource = attr.ib()
     mime_type = attr.ib()
@@ -360,7 +360,7 @@ class StaticResource(object):
 class UriWithId(object):
     REQUIRED = ("resource", )
     CONVERTERS = (
-        Converter(unicode, ("resource", "id")),
+        Converter(str, ("resource", "id")),
     )
     resource = attr.ib()
     id = attr.ib()
@@ -382,7 +382,7 @@ class UriWithId(object):
 class NonLinearAd(object):
     REQUIRED = ("width", "height")
     CONVERTERS = (
-        Converter(unicode, ("iframe_resource", "html_resource", "id")),
+        Converter(str, ("iframe_resource", "html_resource", "id")),
         Converter(int, ("width", "height", "expanded_width", "expanded_height", "min_suggested_duration")),
         Converter(bool, ("scalable", "maintain_aspect_ratio")),
         Converter(ApiFramework, ("api_framework", )),
@@ -480,7 +480,7 @@ class CompanionAd(object):
     """
     REQUIRED = ("width", "height")
     CONVERTERS = (
-        Converter(unicode, ("iframe_resource", "html_resource", "id", "alt_text", "companion_click_through")),
+        Converter(str, ("iframe_resource", "html_resource", "id", "alt_text", "companion_click_through")),
         Converter(int, ("width", "height", "expanded_width", "expanded_height")),
         Converter(ApiFramework, ("api_framework", )),
     )
@@ -593,7 +593,7 @@ class Creative(object):
         SomeOf(attr_names=("linear", "non_linear", "companion")),
     )
     CONVERTERS = (
-        Converter(unicode, ("id", "ad_id")),
+        Converter(str, ("id", "ad_id")),
         Converter(ApiFramework, ("api_framework",)),
         Converter(int, ("sequence",))
     )
@@ -651,7 +651,7 @@ class Inline(object):
     • <Creatives>: the container for one or more <Creative> elements
     """
     REQUIRED = ("ad_system", "ad_title", "impression", "creatives")
-    CONVERTERS = (Converter(unicode, ("ad_system", "ad_title", "impression")), )
+    CONVERTERS = (Converter(str, ("ad_system", "ad_title", "impression")), )
     CLASSES = (ClassChecker("creatives", Creative, True), )
 
     ad_system = attr.ib()
@@ -681,7 +681,7 @@ class Wrapper(object):
     """
     REQUIRED = ("ad_system", "vast_ad_tag_uri")
     CONVERTERS = (
-        Converter(unicode, ("ad_system", "ad_title", "impression", "error")),
+        Converter(str, ("ad_system", "ad_title", "impression", "error")),
     )
     CLASSES = (ClassChecker("creatives", Creative, True), )
 
@@ -715,7 +715,7 @@ class Ad(object):
     """
     REQUIRED = ("id", )
     SOME_OFS = (SomeOf(attr_names=("wrapper", "inline")), )
-    CONVERTERS = (Converter(unicode, ("id", )), )
+    CONVERTERS = (Converter(str, ("id", )), )
     CLASSES = (
         ClassChecker("wrapper", Wrapper),
         ClassChecker("inline", Inline),
