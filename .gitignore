@@ -7,3 +7,4 @@ bin/
 pip-selfcheck.json
 
 env/
+__pycache__/
