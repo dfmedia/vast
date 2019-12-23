@@ -5,3 +5,5 @@
 .idea/
 bin/
 pip-selfcheck.json
+
+env/
