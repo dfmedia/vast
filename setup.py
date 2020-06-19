@@ -17,7 +17,6 @@ setup(
     include_package_data=True,
     install_requires=[
         'attrs>=17.1.0',
-        'enum34==1.1.6',
         'xmltodict>=0.11.0'
     ],
     setup_requires=["vcversioner"],
